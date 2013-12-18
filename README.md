@@ -52,7 +52,7 @@ total | String | A jQuery selector to insert the total number of items into | `'
 	<li data-searchables="UK,United Kingdom,GB,Great Britain">United Kingdom</li>
 	<li data-searchables="USA,United States of America">United States</li>
 	<li data-searchables="FR,France,Francais">France</li>
-	<li class="searchables-noresults">No Results Found</li>
+	<li class="sorry-message">No Results Found</li>
 </ul>
 
 <script>
@@ -64,3 +64,15 @@ total | String | A jQuery selector to insert the total number of items into | `'
 	.searchables-noresults .sorry-message { display: list-item; }
 </style>
 ```
+
+
+
+### Search Strings
+
+Type | Example | Result
+--- | --- | ---
+Single | `united` | Every item with "united" in
+OR | `united france` | Every item with either "united" or "france" in
+AND | `united +kingdom` | Every item with both "united" and "kingdom" in
+NOT | `united -kingdom` | Every item with "united" in, minus those with "kingdom"
+Literal | `"united kingdom"` | Every item with the exact string "united kingdom" in (case insensitive)
