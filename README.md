@@ -1,13 +1,13 @@
 shadow-searchables
 ==================
 
-Filter and search through lists and tables
+Utilising jQuery, Shadow Searchables filter and search through HTML attributes, allowing you to search without AJAX
 
 
 
 ## Initialisation
 
-$( **Input** ).searchables( **SearchPool**_, **[Options]**_ );
+`$( Input ).searchables( SearchPool, [Options] );`
 
 
 
@@ -16,8 +16,8 @@ $( **Input** ).searchables( **SearchPool**_, **[Options]**_ );
 Parameter | Description
 --- | ---
 Input | Input element to use
-SearchPool | Element to search
-Options (optional) | Object of searchable options
+SearchPool | Pool of elements to search within
+Options (optional) | Object of searchable options (see below)
 
 
 
@@ -25,16 +25,16 @@ Options (optional) | Object of searchable options
 
 Parameter | Type | Description | Default | Details
 --- | --- | --- | --- | ---
-attribute | String | The attribute name to search for and filter to | `'data-searchables'` |
-excludeClass | String | Class name of elements to exclude from filtering | `'searchables-exclude'` |
+attribute | String | The attribute name to search for and filter | `'data-searchables'` |
+excludeClass | String | Class name of elements to exclude from the filtering process | `'searchables-exclude'` |
 matchClass | String | Class to add to a matched element | `''` |
 noMatchClass | String | Class to add to an unmatched element | `'searchables-nomatch'` |
-noMatchClass | String | The class to apply to the SearchPool element (second parameter) when no results are found | `'searchables-noresults'` | Added in 2.5.0
-regex | Boolean | Uses the search string as a regular expression | `false`
+noMatchClass | String | The class to apply to the search pool when no results are found | `'searchables-noresults'` | Added in 2.5.0
+regex | Boolean | Allows searching with a regular expression | `false`
 results | String | A jQuery selector to insert the number of matches found into | `''` |
 score | Boolean | Attaches the number of matches to the data-searchables score of the elements | `false` | Added in 2.3.1
-searchingClass | String | The class to apply to the SearchPool element (second parameter) when the searchables are filtering results | `'searchables-searching'` | Added in 2.4.0
-searchOnLoad | Boolean | If true, apply a search when the page loads | `true` |
+searchingClass | String | The class to apply to the search pool element when the searchables are filtering results (removed when not filtering) | `'searchables-searching'` | Added in 2.4.0
+searchOnLoad | Boolean | If true, apply a search when the searchables are initiated | `true` |
 searchText | Boolean | If true, search the text of the elements as well as the attribute | `false` |
 total | String | A jQuery selector to insert the total number of items into | `''` |
 
