@@ -69,10 +69,10 @@ total | String | A jQuery selector to insert the total number of items into | `'
 
 ### Search Strings
 
-Type | Example | Result
---- | --- | ---
-Single | `united` | Every item with "united" in
-OR | `united france` | Every item with either "united" or "france" in
-AND | `united +kingdom` | Every item with both "united" and "kingdom" in
-NOT | `united -kingdom` | Every item with "united" in, minus those with "kingdom"
-Literal | `"united kingdom"` | Every item with the exact string "united kingdom" in (case insensitive)
+Type | Example | Result | Matches
+--- | --- | --- | ---
+Single | `united` | Every item with "united" in | United Kingdom, United States
+OR | `united france` | Every item with either "united" or "france" in | United Kingdom, United States, France
+AND | `united +kingdom` | Every item with both "united" and "kingdom" in | United Kingdom
+NOT | `united -kingdom` | Every item with "united" in, minus those with "kingdom" | United States
+Literal | `"united kingdom"` | Every item with the exact string "united kingdom" in (case insensitive) | United Kingdom
