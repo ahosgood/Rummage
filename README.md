@@ -43,6 +43,7 @@ total | String | A jQuery selector to insert the total number of items into | `'
 ## Example
 
 ```
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="//raw.github.com/ahosgood/shadow-searchables/master/shadow-searchables.min.js"></script>
 
 <input id="query" type="search">
