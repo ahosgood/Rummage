@@ -43,7 +43,7 @@ total | String | A jQuery selector to insert the total number of items into | `'
 ## Example
 
 ```
-<script href="//raw.github.com/ahosgood/shadow-searchables/master/shadow-searchables.min.js"></script>
+<script src="//raw.github.com/ahosgood/shadow-searchables/master/shadow-searchables.min.js"></script>
 
 <input id="query" type="search">
 <p>Showing <span id="results">?</span> of <span id="total">?</span> results</p>
