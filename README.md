@@ -1,5 +1,4 @@
-shadow-searchables
-==================
+#Shadow Searchables
 
 Utilising jQuery, Shadow Searchables filter and search through HTML attributes, allowing you to search without AJAX
 
