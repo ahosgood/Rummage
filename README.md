@@ -40,34 +40,6 @@ total | String | A jQuery selector to insert the total number of items into | `'
 
 
 
-## Example
-
-```
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="//raw.github.com/ahosgood/shadow-searchables/master/shadow-searchables.min.js"></script>
-
-<input id="query" type="search">
-<p>Showing <span id="results">?</span> of <span id="total">?</span> results</p>
-
-<ul id="countries">
-	<li data-searchables="UK,United Kingdom,GB,Great Britain">United Kingdom</li>
-	<li data-searchables="USA,United States of America">United States</li>
-	<li data-searchables="FR,France,Francais">France</li>
-	<li class="sorry-message">No Results Found</li>
-</ul>
-
-<script>
-	$( '#query' ).searchables( '#countries', { results: '#results', total: '#total' } );
-</script>
-
-<style>
-	.searchables-nomatch, .sorry-message { display: none; }
-	.searchables-noresults .sorry-message { display: list-item; }
-</style>
-```
-
-
-
 ### Search Strings
 
 Type | Example | Result | Matches

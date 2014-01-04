@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Shadow Searchables Demo</title>
+		<meta charset="utf-8">
+		<!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script src="../js/shadow-searchables.min.js"></script>
+	</head>
+	<body>
+		<input id="query" type="search">
+		<p>Showing <span id="results">?</span> of <span id="total">?</span> results</p>
+		<ul id="countries">
+		    <li data-searchables="BE,Belgium">Belgium</li>
+		    <li data-searchables="FR,France">France</li>
+		    <li data-searchables="DE,Germany">Germany</li>
+		    <li data-searchables="IT,Italy">Italy</li>
+		    <li data-searchables="DE,Germany">Germany</li>
+		    <li data-searchables="PT,Portugal">Portugal</li>
+		    <li data-searchables="ES,Germany">Spain</li>
+		    <li data-searchables="UK,United Kingdom">United Kingdom</li>
+		    <li data-searchables="USA,United States of America">United States</li>
+		    <li class="sorry-message">No Results Found</li>
+		</ul>
+		<script>
+		    $( '#query' ).searchables( '#countries', { results: '#results', total: '#total' } );
+		</script>
+		<style>
+		    .searchables-nomatch, .sorry-message { display: none; }
+		    .searchables-noresults .sorry-message { display: list-item; }
+		</style>
+	</body>
+</html>
