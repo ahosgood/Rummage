@@ -43,11 +43,7 @@ total | String | A jQuery selector to insert the total number of items into | `'
 
 Using the array of countries:
 
-`[
-	"United Kingdom",
-	"United States",
-	"France"
-]`
+`["United Kingdom", "United States", "France"]`
 
 Type | Example | Result | Matches
 --- | --- | --- | ---
