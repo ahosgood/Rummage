@@ -41,6 +41,14 @@ total | String | A jQuery selector to insert the total number of items into | `'
 
 ### Search Strings
 
+Using the array of countries:
+
+`[
+	"United Kingdom",
+	"United States",
+	"France"
+]`
+
 Type | Example | Result | Matches
 --- | --- | --- | ---
 Single | `united` | Every item with "united" in | United Kingdom, United States
