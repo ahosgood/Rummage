@@ -3,8 +3,8 @@
  * Shadow Searchables
  * --------------------------------------------------------------------------------
  * Author:      Andrew Hosgood
- * Version:     2.5.0
- * Date:        30/09/2013
+ * Version:     2.6.0
+ * Date:        27/05/2014
  * ================================================================================
  */
 
@@ -28,21 +28,23 @@
 
 								if( strThisSearchNodeName === 'input'
 										|| strThisSearchNodeName === 'select' ) {
-									var jqoSearchPool;
+									var jqoBaseSearchPool;
 
 									if( ( typeof jqoSearchTarget === 'object'
 												&& ( $( jqoSearchTarget ) instanceof jQuery
 													|| jqoSearchTarget.jquery ) )
 											|| $( jqoSearchTarget ).length ) {
 										jqoSearchTarget = $( jqoSearchTarget );
-										jqoSearchPool = jqoSearchTarget.find( '[' + objOptions.attribute + ']:not(.' + objOptions.excludeClass + ')' );
+										jqoBaseSearchPool = jqoSearchTarget.find( '[' + objOptions.attribute + ']' );
 									} else {
 										throw 'Can\'t find any searchables';
 									}
 
-									var funSearch = function() {
+									var intBaseTotal = jqoBaseSearchPool.filter( ':not(.' + objOptions.excludeClass + ')' ).length,
+									funSearch = function() {
 											var strSearchTerm = jqoThisSearch.val(),
-											intResults = 0;
+											intResults = 0,
+											jqoSearchPool = jqoBaseSearchPool.filter( ':not(.' + objOptions.excludeClass + ')' );
 
 											if( isBlank( strSearchTerm ) ) {
 												intResults = jqoSearchPool.filter( ':not(.' + objOptions.excludeClass + ')' ).length;
@@ -194,6 +196,15 @@
 													|| $( objOptions.results ).length ) {
 												$( objOptions.results ).text( intResults );
 											}
+
+											if( ( ( typeof objOptions.total === 'object'
+															&& ( $( objOptions.total ) instanceof jQuery
+																|| objOptions.total.jquery ) )
+														|| $( objOptions.total ).length )
+													&& jqoSearchPool.length !== intBaseTotal ) {
+												intBaseTotal = jqoSearchPool.length;
+												$( objOptions.total ).text( intBaseTotal );
+											}
 										};
 
 									if( objOptions.searchOnLoad ) {
@@ -210,11 +221,17 @@
 											break;
 									}
 
+									jqoThisSearch.on(
+										{
+											'searchables.reindex': funSearch
+										}
+									);
+
 									if( ( typeof objOptions.total === 'object'
 												&& ( $( objOptions.total ) instanceof jQuery
 													|| objOptions.total.jquery ) )
 											|| $( objOptions.total ).length ) {
-										$( objOptions.total ).text( jqoSearchPool.filter( ':not(.' + objOptions.excludeClass + ')' ).length );
+										$( objOptions.total ).text( intBaseTotal );
 									}
 								} else {
 									throw 'Searchables can only be called on INPUT and SELECT elements';
