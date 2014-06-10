@@ -3,8 +3,8 @@
  * Shadow Searchables
  * --------------------------------------------------------------------------------
  * Author:      Andrew Hosgood
- * Version:     2.6.0
- * Date:        27/05/2014
+ * Version:     2.7.0
+ * Date:        10/06/2014
  * ================================================================================
  */
 
@@ -40,14 +40,14 @@
 										throw 'Can\'t find any searchables';
 									}
 
-									var intBaseTotal = jqoBaseSearchPool.filter( ':not(.' + objOptions.excludeClass + ')' ).length,
+									var intBaseTotal = jqoBaseSearchPool.filter( ':not(' + objOptions.exclude + ')' ).length,
 									funSearch = function() {
 											var strSearchTerm = jqoThisSearch.val(),
 											intResults = 0,
-											jqoSearchPool = jqoBaseSearchPool.filter( ':not(.' + objOptions.excludeClass + ')' );
+											jqoSearchPool = jqoBaseSearchPool.filter( ':not(' + objOptions.exclude + ')' );
 
 											if( isBlank( strSearchTerm ) ) {
-												intResults = jqoSearchPool.filter( ':not(.' + objOptions.excludeClass + ')' ).length;
+												intResults = jqoSearchPool.filter( ':not(' + objOptions.exclude + ')' ).length;
 												jqoSearchPool.addClass( objOptions.matchClass ).removeClass( objOptions.noMatchClass ),
 												jqoSearchTarget.removeClass( objOptions.searchingClass + ' ' + objOptions.noResultsClass );
 											} else if( objOptions.regex ) {
@@ -241,7 +241,7 @@
 					},
 				$.fn.searchables.objDefaultOptions = {
 						attribute: 'data-searchables',
-						excludeClass: 'searchables-exclude',
+						exclude: '.searchables-exclude',
 						matchClass: '',
 						noMatchClass: 'searchables-nomatch',
 						noResultsClass: 'searchables-noresults',
