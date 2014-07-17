@@ -27,7 +27,7 @@ Shadow Searchables requires jQuery v1.7 or higher
 | excludeClass   | String  | Class name of elements to exclude from the filtering process (changed to 'exclude' parameter)                         | `'searchables-exclude'`   | Deprecated in 2.7.0 |
 | matchClass     | String  | Class to add to a matched element                                                                                     | `''`                      |                     |
 | noMatchClass   | String  | Class to add to an unmatched element                                                                                  | `'searchables-nomatch'`   |                     |
-| noMatchClass   | String  | The class to apply to the search pool when no results are found                                                       | `'searchables-noresults'` | Added in 2.5.0      |
+| noResultsClass | String  | The class to apply to the search pool when no results are found                                                       | `'searchables-noresults'` | Added in 2.5.0      |
 | regex          | Boolean | Allows searching with a regular expression                                                                            | `false`                   |                     |
 | results        | String  | A jQuery selector to insert the number of matches found into                                                          | `''`                      |                     |
 | score          | Boolean | Attaches the number of matches to the data-searchables score of the elements                                          | `false`                   | Added in 2.3.1      |
