@@ -26,7 +26,7 @@ Rummage requires jQuery v1.7 or higher
 | -------------- | ------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------------------- |
 | attribute      | String  | The attribute name to search for and filter                                                                           | `'data-rummage'`          |                     |
 | exclude        | String  | Selector of elements to exclude from the filtering process                                                            | `'.rummage-exclude'`      | Added in 2.7.0      |
-| excludeClass   | String  | Class name of elements to exclude from the filtering process (changed to 'exclude' parameter)                         | `'rummage-exclude'`       | Deprecated in 2.7.0 |
+<>| excludeClass   | String  | Class name of elements to exclude from the filtering process (changed to 'exclude' parameter)                         | `'rummage-exclude'`       | Deprecated in 2.7.0 |
 | matchClass     | String  | Class to add to a matched element                                                                                     | `''`                      |                     |
 | noMatchClass   | String  | Class to add to an unmatched element                                                                                  | `'rummage-nomatch'`       |                     |
 | noResultsClass | String  | The class to apply to the search pool when no results are found                                                       | `'rummage-noresults'`     | Added in 2.5.0      |
