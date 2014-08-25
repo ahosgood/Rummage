@@ -1,10 +1,11 @@
 /**
  * ================================================================================
- * Shadow Searchables
+ * Rummage
+ * jQuery searchables
  * --------------------------------------------------------------------------------
  * Author:      Andrew Hosgood
  * Version:     2.7.0
- * Date:        10/06/2014
+ * Date:        25/08/2014
  * ================================================================================
  */
 
@@ -12,8 +13,8 @@
 	function( $ ) {
 		try {
 			if( window.jQuery ) {
-				$.fn.searchables = function( jqoSearchTarget, objUserOptions ) {
-						var objOptions = $.extend( {}, $.fn.searchables.objDefaultOptions, objUserOptions ),
+				$.fn.rummage = function( jqoSearchTarget, objUserOptions ) {
+						var objOptions = $.extend( {}, $.fn.rummage.objDefaultOptions, objUserOptions ),
 						contains = function( strNeedle, strHaystack ) {
 								return strHaystack.indexOf( strNeedle ) !== -1;
 							},
@@ -37,7 +38,7 @@
 										jqoSearchTarget = $( jqoSearchTarget );
 										jqoBaseSearchPool = jqoSearchTarget.find( '[' + objOptions.attribute + ']' );
 									} else {
-										throw 'Can\'t find any searchables';
+										throw 'Can\'t find anything to rummage';
 									}
 
 									var intBaseTotal = jqoBaseSearchPool.filter( ':not(' + objOptions.exclude + ')' ).length,
@@ -176,7 +177,7 @@
 																}
 
 																if( objOptions.score ) {
-																	jqoSearchableItem.attr( 'data-searchablesscore', intMatches );
+																	jqoSearchableItem.attr( 'data-rummagescore', intMatches );
 																}
 															}
 														);
@@ -223,7 +224,7 @@
 
 									jqoThisSearch.on(
 										{
-											'searchables.reindex': funSearch
+											'rummage.reindex': funSearch
 										}
 									);
 
@@ -234,27 +235,27 @@
 										$( objOptions.total ).text( intBaseTotal );
 									}
 								} else {
-									throw 'Searchables can only be called on INPUT and SELECT elements';
+									throw 'Rummaging can only be called on INPUT and SELECT elements';
 								}
 							}
 						);
 					},
-				$.fn.searchables.objDefaultOptions = {
-						attribute: 'data-searchables',
-						exclude: '.searchables-exclude',
+				$.fn.rummage.objDefaultOptions = {
+						attribute: 'data-rummage',
+						exclude: '.rummage-exclude',
 						matchClass: '',
-						noMatchClass: 'searchables-nomatch',
-						noResultsClass: 'searchables-noresults',
+						noMatchClass: 'rummage-nomatch',
+						noResultsClass: 'rummage-noresults',
 						regex: false,
 						results: '',
 						score: false,
-						searchingClass: 'searchables-searching',
+						searchingClass: 'rummage-searching',
 						searchOnLoad: true,
 						searchText: false,
 						total: ''
 					};
 			} else {
-				throw 'Shadow Searchables requires jQuery to run';
+				throw 'Rummage requires jQuery to run';
 			}
 		} catch( err ) {
 			if( window.console ) {
