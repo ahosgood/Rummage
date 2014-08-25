@@ -2,6 +2,8 @@
 
 Utilising jQuery, Rummage filters and searches through HTML attributes, allowing you to search without AJAX
 
+View the [demo](https://rawgit.com/ahosgood/Rummage/master/demo/index.html)
+
 
 
 ## Initialisation
