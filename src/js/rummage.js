@@ -1,11 +1,11 @@
 /**
  * ================================================================================
  * Rummage
- * jQuery searchables
+ * jQuery Searchables
  * --------------------------------------------------------------------------------
  * Author:      Andrew Hosgood
- * Version:     2.7.0
- * Date:        25/08/2014
+ * Version:     2.8.0
+ * Date:        08/11/2014
  * ================================================================================
  */
 
@@ -16,7 +16,12 @@
 				$.fn.rummage = function( jqoSearchTarget, objUserOptions ) {
 						var objOptions = $.extend( {}, $.fn.rummage.objDefaultOptions, objUserOptions ),
 						contains = function( strNeedle, strHaystack ) {
-								return strHaystack.indexOf( strNeedle ) !== -1;
+								if( objOptions.matchCase === true ) {
+									return strHaystack.indexOf( strNeedle ) !== -1;
+								} else {
+									return strHaystack.toLowerCase().indexOf( strNeedle.toLowerCase() ) !== -1;
+								}
+
 							},
 						isBlank = function( mxdValue ) {
 								return mxdValue.replace( /[\s\t\r\n]*/g, '' ) == '';
@@ -24,8 +29,8 @@
 					
 						return this.each(
 							function() {
-								var jqoThisSearch = $( this );
-								var strThisSearchNodeName = jqoThisSearch[0].nodeName.toLowerCase();
+								var jqoThisSearch = $( this ),
+								strThisSearchNodeName = jqoThisSearch[0].nodeName.toLowerCase();
 
 								if( strThisSearchNodeName === 'input'
 										|| strThisSearchNodeName === 'select' ) {
@@ -65,9 +70,9 @@
 
 															jqoSearchPool.each(
 																function() {
-																	var jqoSearchableItem = $( this );
-																	var strSearchables = jqoSearchableItem.attr( objOptions.attribute ).toLowerCase();
-																	var blMatch = false;
+																	var jqoSearchableItem = $( this ),
+																	strSearchables = jqoSearchableItem.attr( objOptions.attribute ),
+																	blMatch = false;
 
 																	if( regExTest.test( strSearchables )
 																			|| ( objOptions.searchText
@@ -101,9 +106,9 @@
 													intResults = jqoSearchPool.find( '.' + objOptions.matchClass ).length;
 												}
 											} else {
-												var arrAbsoluteSearchTerms = strSearchTerm.toLowerCase().match( /[\+\-]?("([^"]*)"|'([^']*)')/g ),
-												strSearchTermSansAbsolute = strSearchTerm.toLowerCase().replace( /[\+\-]?("[^"]*"|'[^']*')/g, '' ),
-												arrSearchTerms = arrAbsoluteSearchTerms ? strSearchTermSansAbsolute.split( ' ' ).concat( arrAbsoluteSearchTerms ) : strSearchTermSansAbsolute.split( ' ' );
+												var arrAbsoluteSearchTerms = ( objOptions.matchCase === true ) ? strSearchTerm.match( /[\+\-]?("([^"]*)"|'([^']*)')/g ) : strSearchTerm.match( /[\+\-]?("([^"]*)"|'([^']*)')/gi ),
+												strSearchTermSansAbsolute = ( objOptions.matchCase === true ) ? strSearchTerm.replace( /[\+\-]?("[^"]*"|'[^']*')/g, '' ) : strSearchTerm.replace( /[\+\-]?("[^"]*"|'[^']*')/gi, '' ),
+												arrSearchTerms = arrAbsoluteSearchTerms.length ? strSearchTermSansAbsolute.split( ' ' ).concat( arrAbsoluteSearchTerms ) : strSearchTermSansAbsolute.split( ' ' );
 
 												//jqoSearchTarget.each(
 													//function() {
@@ -114,19 +119,19 @@
 
 														jqoSearchPool.each(
 															function() {
-																var jqoSearchableItem = $( this );
-																var strSearchables = jqoSearchableItem.attr( objOptions.attribute ).toLowerCase();
-																var intMatches = 0;
+																var jqoSearchableItem = $( this ),
+																		strSearchables = jqoSearchableItem.attr( objOptions.attribute ),
+																		intMatches = 0;
 
 																if( strThisSearchNodeName === 'select' ) {
 																	if( objOptions.searchText ) {
-																		intMatches = strSearchTerm.toLowerCase() === jqoSearchableItem.text().toLowerCase() ? 1 : 0;
+																		intMatches = ( strSearchTerm === jqoSearchableItem.text() ) ? 1 : 0;
 																	} else {
-																		intMatches = strSearchTerm.toLowerCase() === jqoSearchableItem.attr( objOptions.attribute ).toLowerCase() ? 1 : 0;
+																		intMatches = ( strSearchTerm === jqoSearchableItem.attr( objOptions.attribute ) ) ? 1 : 0;
 																	}
 																} else {
 																	if( objOptions.searchText ) {
-																		strSearchables += ',' + jqoSearchableItem.text();
+																		strSearchables = ( strSearchables === '' ) ? jqoSearchableItem.text() : strSearchables + ',' + jqoSearchableItem.text();
 																	}
 
 																	for( var intTerm = 0, intTerms = arrSearchTerms.length; intTerm < intTerms; intTerm++ ) {
@@ -243,6 +248,7 @@
 				$.fn.rummage.objDefaultOptions = {
 						attribute: 'data-rummage',
 						exclude: '.rummage-exclude',
+						matchCase: false,
 						matchClass: '',
 						noMatchClass: 'rummage-nomatch',
 						noResultsClass: 'rummage-noresults',
