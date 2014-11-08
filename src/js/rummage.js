@@ -4,7 +4,7 @@
  * jQuery Searchables
  * --------------------------------------------------------------------------------
  * Author:      Andrew Hosgood
- * Version:     2.8.0
+ * Version:     2.8.1
  * Date:        08/11/2014
  * ================================================================================
  */
@@ -108,7 +108,7 @@
 											} else {
 												var arrAbsoluteSearchTerms = ( objOptions.matchCase === true ) ? strSearchTerm.match( /[\+\-]?("([^"]*)"|'([^']*)')/g ) : strSearchTerm.match( /[\+\-]?("([^"]*)"|'([^']*)')/gi ),
 												strSearchTermSansAbsolute = ( objOptions.matchCase === true ) ? strSearchTerm.replace( /[\+\-]?("[^"]*"|'[^']*')/g, '' ) : strSearchTerm.replace( /[\+\-]?("[^"]*"|'[^']*')/gi, '' ),
-												arrSearchTerms = arrAbsoluteSearchTerms.length ? strSearchTermSansAbsolute.split( ' ' ).concat( arrAbsoluteSearchTerms ) : strSearchTermSansAbsolute.split( ' ' );
+												arrSearchTerms = arrAbsoluteSearchTerms ? strSearchTermSansAbsolute.split( ' ' ).concat( arrAbsoluteSearchTerms ) : strSearchTermSansAbsolute.split( ' ' );
 
 												//jqoSearchTarget.each(
 													//function() {
