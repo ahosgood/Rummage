@@ -4,26 +4,522 @@
 		<title>Rummage - jQuery searchables</title>
 		<meta charset="utf-8">
 		<!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-		<script src="../src/js/rummage.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="../src/js/rummage.js"></script>
 	</head>
 	<body>
-		<input id="query" type="search">
+		<input id="search-elements" type="search" size="35" placeholder="Search an HTML element">
+        <input id="search-json" type="search" size="35" placeholder="Autocomplete from a JSON array">
 		<p>Showing <span id="results">?</span> of <span id="total">?</span> results</p>
 		<ul id="countries">
-		    <li data-rummage="BE,Belgium">Belgium</li>
-		    <li data-rummage="FR,France">France</li>
-		    <li data-rummage="DE,Germany">Germany</li>
-		    <li data-rummage="IT,Italy">Italy</li>
-		    <li data-rummage="PT,Portugal">Portugal</li>
-			<li data-rummage="RU,Russia">Russia</li>
-			<li data-rummage="ES,Spain">Spain</li>
-		    <li data-rummage="UK,United Kingdom">United Kingdom</li>
-		    <li data-rummage="USA,United States of America">United States</li>
+            <li data-rummage="AF,Afghanistan">Afghanistan</li>
+            <li data-rummage="AX,Åland Islands">Åland Islands</li>
+            <li data-rummage="AL,Albania">Albania</li>
+            <li data-rummage="DZ,Algeria">Algeria</li>
+            <li data-rummage="AS,American Samoa">American Samoa</li>
+            <li data-rummage="AD,Andorra">Andorra</li>
+            <li data-rummage="AO,Angola">Angola</li>
+            <li data-rummage="AI,Anguilla">Anguilla</li>
+            <li data-rummage="AQ,Antarctica">Antarctica</li>
+            <li data-rummage="AG,Antigua and Barbuda">Antigua and Barbuda</li>
+            <li data-rummage="AR,Argentina">Argentina</li>
+            <li data-rummage="AM,Armenia">Armenia</li>
+            <li data-rummage="AW,Aruba">Aruba</li>
+            <li data-rummage="AU,Australia">Australia</li>
+            <li data-rummage="AT,Austria">Austria</li>
+            <li data-rummage="AZ,Azerbaijan">Azerbaijan</li>
+            <li data-rummage="BS,Bahamas">Bahamas</li>
+            <li data-rummage="BH,Bahrain">Bahrain</li>
+            <li data-rummage="BD,Bangladesh">Bangladesh</li>
+            <li data-rummage="BB,Barbados">Barbados</li>
+            <li data-rummage="BY,Belarus">Belarus</li>
+            <li data-rummage="BE,Belgium">Belgium</li>
+            <li data-rummage="BZ,Belize">Belize</li>
+            <li data-rummage="BJ,Benin">Benin</li>
+            <li data-rummage="BM,Bermuda">Bermuda</li>
+            <li data-rummage="BT,Bhutan">Bhutan</li>
+            <li data-rummage="BO,Bolivia, Plurinational State of">Bolivia, Plurinational State of</li>
+            <li data-rummage="BQ,Bonaire, Sint Eustatius and Saba">Bonaire, Sint Eustatius and Saba</li>
+            <li data-rummage="BA,Bosnia and Herzegovina">Bosnia and Herzegovina</li>
+            <li data-rummage="BW,Botswana">Botswana</li>
+            <li data-rummage="BV,Bouvet Island">Bouvet Island</li>
+            <li data-rummage="BR,Brazil">Brazil</li>
+            <li data-rummage="IO,British Indian Ocean Territory">British Indian Ocean Territory</li>
+            <li data-rummage="BN,Brunei Darussalam">Brunei Darussalam</li>
+            <li data-rummage="BG,Bulgaria">Bulgaria</li>
+            <li data-rummage="BF,Burkina Faso">Burkina Faso</li>
+            <li data-rummage="BI,Burundi">Burundi</li>
+            <li data-rummage="KH,Cambodia">Cambodia</li>
+            <li data-rummage="CM,Cameroon">Cameroon</li>
+            <li data-rummage="CA,Canada">Canada</li>
+            <li data-rummage="CV,Cape Verde">Cape Verde</li>
+            <li data-rummage="KY,Cayman Islands">Cayman Islands</li>
+            <li data-rummage="CF,Central African Republic">Central African Republic</li>
+            <li data-rummage="TD,Chad">Chad</li>
+            <li data-rummage="CL,Chile">Chile</li>
+            <li data-rummage="CN,China">China</li>
+            <li data-rummage="CX,Christmas Island">Christmas Island</li>
+            <li data-rummage="CC,Cocos (Keeling) Islands">Cocos (Keeling) Islands</li>
+            <li data-rummage="CO,Colombia">Colombia</li>
+            <li data-rummage="KM,Comoros">Comoros</li>
+            <li data-rummage="CG,Congo">Congo</li>
+            <li data-rummage="CD,Congo, The Democratic Republic of">Congo, The Democratic Republic of</li>
+            <li data-rummage="CK,Cook Islands">Cook Islands</li>
+            <li data-rummage="CR,Costa Rica">Costa Rica</li>
+            <li data-rummage="CI,Côte D'ivoire">Côte D'ivoire</li>
+            <li data-rummage="HR,Croatia">Croatia</li>
+            <li data-rummage="CW,Curaçao">Curaçao</li>
+            <li data-rummage="CU,Cuba">Cuba</li>
+            <li data-rummage="CY,Cyprus">Cyprus</li>
+            <li data-rummage="CZ,Czech Republic">Czech Republic</li>
+            <li data-rummage="DK,Denmark">Denmark</li>
+            <li data-rummage="DJ,Djibouti">Djibouti</li>
+            <li data-rummage="DM,Dominica">Dominica</li>
+            <li data-rummage="DO,Dominican Republic">Dominican Republic</li>
+            <li data-rummage="EC,Ecuador">Ecuador</li>
+            <li data-rummage="EG,Egypt">Egypt</li>
+            <li data-rummage="SV,El Salvador">El Salvador</li>
+            <li data-rummage="GQ,Equatorial Guinea">Equatorial Guinea</li>
+            <li data-rummage="ER,Eritrea">Eritrea</li>
+            <li data-rummage="EE,Estonia">Estonia</li>
+            <li data-rummage="ET,Ethiopia">Ethiopia</li>
+            <li data-rummage="FK,Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</li>
+            <li data-rummage="FO,Faroe Islands">Faroe Islands</li>
+            <li data-rummage="FJ,Fiji">Fiji</li>
+            <li data-rummage="FI,Finland">Finland</li>
+            <li data-rummage="FR,France">France</li>
+            <li data-rummage="GF,French Guiana">French Guiana</li>
+            <li data-rummage="PF,French Polynesia">French Polynesia</li>
+            <li data-rummage="TF,French Southern Territories">French Southern Territories</li>
+            <li data-rummage="GA,Gabon">Gabon</li>
+            <li data-rummage="GM,Gambia">Gambia</li>
+            <li data-rummage="GE,Georgia">Georgia</li>
+            <li data-rummage="DE,Germany">Germany</li>
+            <li data-rummage="GH,Ghana">Ghana</li>
+            <li data-rummage="GI,Gibraltar">Gibraltar</li>
+            <li data-rummage="GR,Greece">Greece</li>
+            <li data-rummage="GL,Greenland">Greenland</li>
+            <li data-rummage="GD,Grenada">Grenada</li>
+            <li data-rummage="GP,Guadeloupe">Guadeloupe</li>
+            <li data-rummage="GU,Guam">Guam</li>
+            <li data-rummage="GT,Guatemala">Guatemala</li>
+            <li data-rummage="GG,Guernsey">Guernsey</li>
+            <li data-rummage="GN,Guinea">Guinea</li>
+            <li data-rummage="GW,Guinea-Bissau">Guinea-Bissau</li>
+            <li data-rummage="GY,Guyana">Guyana</li>
+            <li data-rummage="HT,Haiti">Haiti</li>
+            <li data-rummage="HM,Heard Island and Mcdonald Islands">Heard Island and Mcdonald Islands</li>
+            <li data-rummage="VA,Holy See (Vatican City State)">Holy See (Vatican City State)</li>
+            <li data-rummage="HN,Honduras">Honduras</li>
+            <li data-rummage="HK,Hong Kong">Hong Kong</li>
+            <li data-rummage="HU,Hungary">Hungary</li>
+            <li data-rummage="IS,Iceland">Iceland</li>
+            <li data-rummage="IN,India">India</li>
+            <li data-rummage="ID,Indonesia">Indonesia</li>
+            <li data-rummage="IR,Iran, Islamic Republic of">Iran, Islamic Republic of</li>
+            <li data-rummage="IQ,Iraq">Iraq</li>
+            <li data-rummage="IE,Ireland">Ireland</li>
+            <li data-rummage="IM,Isle of Man">Isle of Man</li>
+            <li data-rummage="IL,Israel">Israel</li>
+            <li data-rummage="IT,Italy">Italy</li>
+            <li data-rummage="JM,Jamaica">Jamaica</li>
+            <li data-rummage="JP,Japan">Japan</li>
+            <li data-rummage="JE,Jersey">Jersey</li>
+            <li data-rummage="JO,Jordan">Jordan</li>
+            <li data-rummage="KZ,Kazakhstan">Kazakhstan</li>
+            <li data-rummage="KE,Kenya">Kenya</li>
+            <li data-rummage="KI,Kiribati">Kiribati</li>
+            <li data-rummage="KP,Korea, Democratic People's Republic of">Korea, Democratic People's Republic of</li>
+            <li data-rummage="KR,Korea, Republic of">Korea, Republic of</li>
+            <li data-rummage="KW,Kuwait">Kuwait</li>
+            <li data-rummage="KG,Kyrgyzstan">Kyrgyzstan</li>
+            <li data-rummage="LA,Lao People's Democratic Republic">Lao People's Democratic Republic</li>
+            <li data-rummage="LV,Latvia">Latvia</li>
+            <li data-rummage="LB,Lebanon">Lebanon</li>
+            <li data-rummage="LS,Lesotho">Lesotho</li>
+            <li data-rummage="LR,Liberia">Liberia</li>
+            <li data-rummage="LY,Libya">Libya</li>
+            <li data-rummage="LI,Liechtenstein">Liechtenstein</li>
+            <li data-rummage="LT,Lithuania">Lithuania</li>
+            <li data-rummage="LU,Luxembourg">Luxembourg</li>
+            <li data-rummage="MO,Macao">Macao</li>
+            <li data-rummage="MK,Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav Republic of</li>
+            <li data-rummage="MG,Madagascar">Madagascar</li>
+            <li data-rummage="MW,Malawi">Malawi</li>
+            <li data-rummage="MY,Malaysia">Malaysia</li>
+            <li data-rummage="MV,Maldives">Maldives</li>
+            <li data-rummage="ML,Mali">Mali</li>
+            <li data-rummage="MT,Malta">Malta</li>
+            <li data-rummage="MH,Marshall Islands">Marshall Islands</li>
+            <li data-rummage="MQ,Martinique">Martinique</li>
+            <li data-rummage="MR,Mauritania">Mauritania</li>
+            <li data-rummage="MU,Mauritius">Mauritius</li>
+            <li data-rummage="YT,Mayotte">Mayotte</li>
+            <li data-rummage="MX,Mexico">Mexico</li>
+            <li data-rummage="FM,Micronesia, Federated States of">Micronesia, Federated States of</li>
+            <li data-rummage="MD,Moldova, Republic of">Moldova, Republic of</li>
+            <li data-rummage="MC,Monaco">Monaco</li>
+            <li data-rummage="MN,Mongolia">Mongolia</li>
+            <li data-rummage="ME,Montenegro">Montenegro</li>
+            <li data-rummage="MS,Montserrat">Montserrat</li>
+            <li data-rummage="MA,Morocco">Morocco</li>
+            <li data-rummage="MZ,Mozambique">Mozambique</li>
+            <li data-rummage="MM,Myanmar">Myanmar</li>
+            <li data-rummage="NA,Namibia">Namibia</li>
+            <li data-rummage="NR,Nauru">Nauru</li>
+            <li data-rummage="NP,Nepal">Nepal</li>
+            <li data-rummage="NL,Netherlands">Netherlands</li>
+            <li data-rummage="NC,New Caledonia">New Caledonia</li>
+            <li data-rummage="NZ,New Zealand">New Zealand</li>
+            <li data-rummage="NI,Nicaragua">Nicaragua</li>
+            <li data-rummage="NE,Niger">Niger</li>
+            <li data-rummage="NG,Nigeria">Nigeria</li>
+            <li data-rummage="NU,Niue">Niue</li>
+            <li data-rummage="NF,Norfolk Island">Norfolk Island</li>
+            <li data-rummage="MP,Northern Mariana Islands">Northern Mariana Islands</li>
+            <li data-rummage="NO,Norway">Norway</li>
+            <li data-rummage="OM,Oman">Oman</li>
+            <li data-rummage="PK,Pakistan">Pakistan</li>
+            <li data-rummage="PW,Palau">Palau</li>
+            <li data-rummage="PS,Palestinian Territory, Occupied">Palestinian Territory, Occupied</li>
+            <li data-rummage="PA,Panama">Panama</li>
+            <li data-rummage="PG,Papua New Guinea">Papua New Guinea</li>
+            <li data-rummage="PY,Paraguay">Paraguay</li>
+            <li data-rummage="PE,Peru">Peru</li>
+            <li data-rummage="PH,Philippines">Philippines</li>
+            <li data-rummage="PN,Pitcairn">Pitcairn</li>
+            <li data-rummage="PL,Poland">Poland</li>
+            <li data-rummage="PT,Portugal">Portugal</li>
+            <li data-rummage="PR,Puerto Rico">Puerto Rico</li>
+            <li data-rummage="QA,Qatar">Qatar</li>
+            <li data-rummage="RE,Réunion">Réunion</li>
+            <li data-rummage="RO,Romania">Romania</li>
+            <li data-rummage="RU,Russian Federation">Russian Federation</li>
+            <li data-rummage="RW,Rwanda">Rwanda</li>
+            <li data-rummage="BL,Saint Barthélemy">Saint Barthélemy</li>
+            <li data-rummage="DA,Saint Helena, Ascension and Tristan">Saint Helena, Ascension and Tristan</li>
+            <li data-rummage="SH,Cunha">Cunha</li>
+            <li data-rummage="KN,Saint Kitts and Nevis">Saint Kitts and Nevis</li>
+            <li data-rummage="LC,Saint Lucia">Saint Lucia</li>
+            <li data-rummage="MF,Saint Martin (French Part)">Saint Martin (French Part)</li>
+            <li data-rummage="PM,Saint Pierre and Miquelon">Saint Pierre and Miquelon</li>
+            <li data-rummage="VC,Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</li>
+            <li data-rummage="WS,Samoa">Samoa</li>
+            <li data-rummage="SM,San Marino">San Marino</li>
+            <li data-rummage="ST,São Tomé and Príncipe">São Tomé and Príncipe</li>
+            <li data-rummage="SA,Saudi Arabia">Saudi Arabia</li>
+            <li data-rummage="SN,Senegal">Senegal</li>
+            <li data-rummage="RS,Serbia">Serbia</li>
+            <li data-rummage="SC,Seychelles">Seychelles</li>
+            <li data-rummage="SL,Sierra Leone">Sierra Leone</li>
+            <li data-rummage="SG,Singapore">Singapore</li>
+            <li data-rummage="SX,Sint Maarten (Dutch Part)">Sint Maarten (Dutch Part)</li>
+            <li data-rummage="SK,Slovakia">Slovakia</li>
+            <li data-rummage="SI,Slovenia">Slovenia</li>
+            <li data-rummage="SB,Solomon Islands">Solomon Islands</li>
+            <li data-rummage="SO,Somalia">Somalia</li>
+            <li data-rummage="ZA,South Africa">South Africa</li>
+            <li data-rummage="GS,South Georgia and the South Sandwich Islands">South Georgia and the South Sandwich Islands</li>
+            <li data-rummage="SS,South Sudan">South Sudan</li>
+            <li data-rummage="ES,Spain">Spain</li>
+            <li data-rummage="LK,Sri Lanka">Sri Lanka</li>
+            <li data-rummage="SD,Sudan">Sudan</li>
+            <li data-rummage="SR,Suriname">Suriname</li>
+            <li data-rummage="SJ,Svalbard and Jan Mayen">Svalbard and Jan Mayen</li>
+            <li data-rummage="SZ,Swaziland">Swaziland</li>
+            <li data-rummage="SE,Sweden">Sweden</li>
+            <li data-rummage="CH,Switzerland">Switzerland</li>
+            <li data-rummage="SY,Syrian Arab Republic">Syrian Arab Republic</li>
+            <li data-rummage="TW,Taiwan, Province of China">Taiwan, Province of China</li>
+            <li data-rummage="TJ,Tajikistan">Tajikistan</li>
+            <li data-rummage="TZ,Tanzania, United Republic of">Tanzania, United Republic of</li>
+            <li data-rummage="TH,Thailand">Thailand</li>
+            <li data-rummage="TL,Timor-Leste">Timor-Leste</li>
+            <li data-rummage="TG,Togo">Togo</li>
+            <li data-rummage="TK,Tokelau">Tokelau</li>
+            <li data-rummage="TO,Tonga">Tonga</li>
+            <li data-rummage="TT,Trinidad and Tobago">Trinidad and Tobago</li>
+            <li data-rummage="TN,Tunisia">Tunisia</li>
+            <li data-rummage="TR,Turkey">Turkey</li>
+            <li data-rummage="TM,Turkmenistan">Turkmenistan</li>
+            <li data-rummage="TC,Turks and Caicos Islands">Turks and Caicos Islands</li>
+            <li data-rummage="TV,Tuvalu">Tuvalu</li>
+            <li data-rummage="UG,Uganda">Uganda</li>
+            <li data-rummage="UA,Ukraine">Ukraine</li>
+            <li data-rummage="AE,United Arab Emirates">United Arab Emirates</li>
+            <li data-rummage="GB,United Kingdom">United Kingdom</li>
+            <li data-rummage="US,United States">United States</li>
+            <li data-rummage="UM,United States Minor Outlying Islands">United States Minor Outlying Islands</li>
+            <li data-rummage="UY,Uruguay">Uruguay</li>
+            <li data-rummage="UZ,Uzbekistan">Uzbekistan</li>
+            <li data-rummage="VU,Vanuatu">Vanuatu</li>
+            <li data-rummage="VE,Venezuela, Bolivarian Republic of">Venezuela, Bolivarian Republic of</li>
+            <li data-rummage="VN,Vietnam">Vietnam</li>
+            <li data-rummage="VG,Virgin Islands, British">Virgin Islands, British</li>
+            <li data-rummage="VI,Virgin Islands, U.S.">Virgin Islands, U.S.</li>
+            <li data-rummage="WF,Wallis and Futuna">Wallis and Futuna</li>
+            <li data-rummage="EH,Western Sahara">Western Sahara</li>
+            <li data-rummage="YE,Yemen">Yemen</li>
+            <li data-rummage="ZM,Zambia">Zambia</li>
+            <li data-rummage="ZW,Zimbabwe">Zimbabwe</li>
 		    <li class="sorry-message">No Results Found</li>
 		</ul>
 		<script>
-		    $( '#query' ).rummage( '#countries', { results: '#results', total: '#total' } );
+		    $( '#search-elements' ).rummage( '#countries', { results: '#results', total: '#total', score: false } ),
+		    $( '#search-json' ).rummage(
+			    {
+                    "AF": "Afghanistan",
+                    "AX": "Åland Islands",
+                    "AL": "Albania",
+                    "DZ": "Algeria",
+                    "AS": "American Samoa",
+                    "AD": "Andorra",
+                    "AO": "Angola",
+                    "AI": "Anguilla",
+                    "AQ": "Antarctica",
+                    "AG": "Antigua and Barbuda",
+                    "AR": "Argentina",
+                    "AM": "Armenia",
+                    "AW": "Aruba",
+                    "AU": "Australia",
+                    "AT": "Austria",
+                    "AZ": "Azerbaijan",
+                    "BS": "Bahamas",
+                    "BH": "Bahrain",
+                    "BD": "Bangladesh",
+                    "BB": "Barbados",
+                    "BY": "Belarus",
+                    "BE": "Belgium",
+                    "BZ": "Belize",
+                    "BJ": "Benin",
+                    "BM": "Bermuda",
+                    "BT": "Bhutan",
+                    "BO": "Bolivia, Plurinational State of",
+                    "BQ": "Bonaire, Sint Eustatius and Saba",
+                    "BA": "Bosnia and Herzegovina",
+                    "BW": "Botswana",
+                    "BV": "Bouvet Island",
+                    "BR": "Brazil",
+                    "IO": "British Indian Ocean Territory",
+                    "BN": "Brunei Darussalam",
+                    "BG": "Bulgaria",
+                    "BF": "Burkina Faso",
+                    "BI": "Burundi",
+                    "KH": "Cambodia",
+                    "CM": "Cameroon",
+                    "CA": "Canada",
+                    "CV": "Cape Verde",
+                    "KY": "Cayman Islands",
+                    "CF": "Central African Republic",
+                    "TD": "Chad",
+                    "CL": "Chile",
+                    "CN": "China",
+                    "CX": "Christmas Island",
+                    "CC": "Cocos (Keeling) Islands",
+                    "CO": "Colombia",
+                    "KM": "Comoros",
+                    "CG": "Congo",
+                    "CD": "Congo, The Democratic Republic of",
+                    "CK": "Cook Islands",
+                    "CR": "Costa Rica",
+                    "CI": "Côte D'ivoire",
+                    "HR": "Croatia",
+                    "CW": "Curaçao",
+                    "CU": "Cuba",
+                    "CY": "Cyprus",
+                    "CZ": "Czech Republic",
+                    "DK": "Denmark",
+                    "DJ": "Djibouti",
+                    "DM": "Dominica",
+                    "DO": "Dominican Republic",
+                    "EC": "Ecuador",
+                    "EG": "Egypt",
+                    "SV": "El Salvador",
+                    "GQ": "Equatorial Guinea",
+                    "ER": "Eritrea",
+                    "EE": "Estonia",
+                    "ET": "Ethiopia",
+                    "FK": "Falkland Islands (Malvinas)",
+                    "FO": "Faroe Islands",
+                    "FJ": "Fiji",
+                    "FI": "Finland",
+                    "FR": "France",
+                    "GF": "French Guiana",
+                    "PF": "French Polynesia",
+                    "TF": "French Southern Territories",
+                    "GA": "Gabon",
+                    "GM": "Gambia",
+                    "GE": "Georgia",
+                    "DE": "Germany",
+                    "GH": "Ghana",
+                    "GI": "Gibraltar",
+                    "GR": "Greece",
+                    "GL": "Greenland",
+                    "GD": "Grenada",
+                    "GP": "Guadeloupe",
+                    "GU": "Guam",
+                    "GT": "Guatemala",
+                    "GG": "Guernsey",
+                    "GN": "Guinea",
+                    "GW": "Guinea-Bissau",
+                    "GY": "Guyana",
+                    "HT": "Haiti",
+                    "HM": "Heard Island and Mcdonald Islands",
+                    "VA": "Holy See (Vatican City State)",
+                    "HN": "Honduras",
+                    "HK": "Hong Kong",
+                    "HU": "Hungary",
+                    "IS": "Iceland",
+                    "IN": "India",
+                    "ID": "Indonesia",
+                    "IR": "Iran, Islamic Republic of",
+                    "IQ": "Iraq",
+                    "IE": "Ireland",
+                    "IM": "Isle of Man",
+                    "IL": "Israel",
+                    "IT": "Italy",
+                    "JM": "Jamaica",
+                    "JP": "Japan",
+                    "JE": "Jersey",
+                    "JO": "Jordan",
+                    "KZ": "Kazakhstan",
+                    "KE": "Kenya",
+                    "KI": "Kiribati",
+                    "KP": "Korea, Democratic People's Republic of",
+                    "KR": "Korea, Republic of",
+                    "KW": "Kuwait",
+                    "KG": "Kyrgyzstan",
+                    "LA": "Lao People's Democratic Republic",
+                    "LV": "Latvia",
+                    "LB": "Lebanon",
+                    "LS": "Lesotho",
+                    "LR": "Liberia",
+                    "LY": "Libya",
+                    "LI": "Liechtenstein",
+                    "LT": "Lithuania",
+                    "LU": "Luxembourg",
+                    "MO": "Macao",
+                    "MK": "Macedonia, The Former Yugoslav Republic of",
+                    "MG": "Madagascar",
+                    "MW": "Malawi",
+                    "MY": "Malaysia",
+                    "MV": "Maldives",
+                    "ML": "Mali",
+                    "MT": "Malta",
+                    "MH": "Marshall Islands",
+                    "MQ": "Martinique",
+                    "MR": "Mauritania",
+                    "MU": "Mauritius",
+                    "YT": "Mayotte",
+                    "MX": "Mexico",
+                    "FM": "Micronesia, Federated States of",
+                    "MD": "Moldova, Republic of",
+                    "MC": "Monaco",
+                    "MN": "Mongolia",
+                    "ME": "Montenegro",
+                    "MS": "Montserrat",
+                    "MA": "Morocco",
+                    "MZ": "Mozambique",
+                    "MM": "Myanmar",
+                    "NA": "Namibia",
+                    "NR": "Nauru",
+                    "NP": "Nepal",
+                    "NL": "Netherlands",
+                    "NC": "New Caledonia",
+                    "NZ": "New Zealand",
+                    "NI": "Nicaragua",
+                    "NE": "Niger",
+                    "NG": "Nigeria",
+                    "NU": "Niue",
+                    "NF": "Norfolk Island",
+                    "MP": "Northern Mariana Islands",
+                    "NO": "Norway",
+                    "OM": "Oman",
+                    "PK": "Pakistan",
+                    "PW": "Palau",
+                    "PS": "Palestinian Territory, Occupied",
+                    "PA": "Panama",
+                    "PG": "Papua New Guinea",
+                    "PY": "Paraguay",
+                    "PE": "Peru",
+                    "PH": "Philippines",
+                    "PN": "Pitcairn",
+                    "PL": "Poland",
+                    "PT": "Portugal",
+                    "PR": "Puerto Rico",
+                    "QA": "Qatar",
+                    "RE": "Réunion",
+                    "RO": "Romania",
+                    "RU": "Russian Federation",
+                    "RW": "Rwanda",
+                    "BL": "Saint Barthélemy",
+                    "DA": "Saint Helena, Ascension and Tristan",
+                    "SH": "Cunha",
+                    "KN": "Saint Kitts and Nevis",
+                    "LC": "Saint Lucia",
+                    "MF": "Saint Martin (French Part)",
+                    "PM": "Saint Pierre and Miquelon",
+                    "VC": "Saint Vincent and the Grenadines",
+                    "WS": "Samoa",
+                    "SM": "San Marino",
+                    "ST": "São Tomé and Príncipe",
+                    "SA": "Saudi Arabia",
+                    "SN": "Senegal",
+                    "RS": "Serbia",
+                    "SC": "Seychelles",
+                    "SL": "Sierra Leone",
+                    "SG": "Singapore",
+                    "SX": "Sint Maarten (Dutch Part)",
+                    "SK": "Slovakia",
+                    "SI": "Slovenia",
+                    "SB": "Solomon Islands",
+                    "SO": "Somalia",
+                    "ZA": "South Africa",
+                    "GS": "South Georgia and the South Sandwich Islands",
+                    "SS": "South Sudan",
+                    "ES": "Spain",
+                    "LK": "Sri Lanka",
+                    "SD": "Sudan",
+                    "SR": "Suriname",
+                    "SJ": "Svalbard and Jan Mayen",
+                    "SZ": "Swaziland",
+                    "SE": "Sweden",
+                    "CH": "Switzerland",
+                    "SY": "Syrian Arab Republic",
+                    "TW": "Taiwan, Province of China",
+                    "TJ": "Tajikistan",
+                    "TZ": "Tanzania, United Republic of",
+                    "TH": "Thailand",
+                    "TL": "Timor-Leste",
+                    "TG": "Togo",
+                    "TK": "Tokelau",
+                    "TO": "Tonga",
+                    "TT": "Trinidad and Tobago",
+                    "TN": "Tunisia",
+                    "TR": "Turkey",
+                    "TM": "Turkmenistan",
+                    "TC": "Turks and Caicos Islands",
+                    "TV": "Tuvalu",
+                    "UG": "Uganda",
+                    "UA": "Ukraine",
+                    "AE": "United Arab Emirates",
+                    "GB": "United Kingdom",
+                    "US": "United States",
+                    "UM": "United States Minor Outlying Islands",
+                    "UY": "Uruguay",
+                    "UZ": "Uzbekistan",
+                    "VU": "Vanuatu",
+                    "VE": "Venezuela, Bolivarian Republic of",
+                    "VN": "Vietnam",
+                    "VG": "Virgin Islands, British",
+                    "VI": "Virgin Islands, U.S.",
+                    "WF": "Wallis and Futuna",
+                    "EH": "Western Sahara",
+                    "YE": "Yemen",
+                    "ZM": "Zambia",
+                    "ZW": "Zimbabwe"
+			    }
+		    );
 		</script>
 		<style>
 		    .rummage-nomatch, .sorry-message { display: none; }
