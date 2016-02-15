@@ -4,27 +4,29 @@
  * jQuery Searchables
  * --------------------------------------------------------------------------------
  * Author:      Andrew Hosgood
- * Version:     2.9.0
- * Date:        23/10/2015
+ * Version:     2.10.0
+ * Date:        2015-02-15
  * ================================================================================
  */
 
 (
-	function( factory ) {
-		if( typeof define === 'function' &&
-				define.amd ) {
-			define(
-				'rummage',
-				['jquery'],
-				factory
-			);
-		} else if( typeof module === 'object' &&
-				module.exports ) {
-			module.exports = factory( require( 'jquery' )( window ) );
-		} else {
-			factory( jQuery );
+	(
+		function( factory ) {
+			if( typeof define === 'function' &&
+					define.amd ) {
+				define(
+					'rummage',
+					['jquery'],
+					factory
+				);
+			} else if( typeof module === 'object' &&
+					module.exports ) {
+				module.exports = factory( require( 'jquery' )( window ) );
+			} else {
+				factory( jQuery );
+			}
 		}
-	}(
+	)(
 		function( $ ) {
 			$.fn.rummage = function( jqoSearchTarget, objUserOptions ) {
 					var objOptions = $.extend( {}, $.fn.rummage.objDefaultOptions, objUserOptions ),
@@ -37,7 +39,7 @@
 
 						},
 					isBlank = function( mxdValue ) {
-							return mxdValue.replace( /[\s\t\r\n]*/g, '' ) == '';
+							return mxdValue.replace( /[\s\t\r\n]*/g, '' ) === '';
 						};
 
 					return this.each(
@@ -45,14 +47,14 @@
 							var jqoThisSearch = $( this ),
 							strThisSearchNodeName = jqoThisSearch[0].nodeName.toLowerCase();
 
-							if( strThisSearchNodeName === 'input'
-									|| strThisSearchNodeName === 'select' ) {
+							if( strThisSearchNodeName === 'input' ||
+									strThisSearchNodeName === 'select' ) {
 								var jqoBaseSearchPool;
 
-								if( ( typeof jqoSearchTarget === 'object'
-											&& ( $( jqoSearchTarget ) instanceof jQuery
-												|| jqoSearchTarget.jquery ) )
-										|| $( jqoSearchTarget ).length ) {
+								if( ( typeof jqoSearchTarget === 'object' &&
+											( $( jqoSearchTarget ) instanceof jQuery ||
+												jqoSearchTarget.jquery ) ) ||
+										$( jqoSearchTarget ).length ) {
 									jqoSearchTarget = $( jqoSearchTarget );
 									jqoBaseSearchPool = jqoSearchTarget.find( '[' + objOptions.attribute + ']' );
 								} else {
@@ -67,7 +69,7 @@
 
 										if( isBlank( strSearchTerm ) ) {
 											intResults = jqoSearchPool.filter( ':not(' + objOptions.exclude + ')' ).length;
-											jqoSearchPool.addClass( objOptions.matchClass ).removeClass( objOptions.noMatchClass ),
+											jqoSearchPool.addClass( objOptions.matchClass ).removeClass( objOptions.noMatchClass );
 											jqoSearchTarget.removeClass( objOptions.searchingClass + ' ' + objOptions.noResultsClass );
 										} else if( objOptions.regex ) {
 											try {
@@ -87,9 +89,9 @@
 																strSearchables = jqoSearchableItem.attr( objOptions.attribute ),
 																blMatch = false;
 
-																if( regExTest.test( strSearchables )
-																		|| ( objOptions.searchText
-																			&& regExTest.test( jqoSearchableItem.text() ) ) ) {
+																if( regExTest.test( strSearchables ) ||
+																		( objOptions.searchText &&
+																			regExTest.test( jqoSearchableItem.text() ) ) ) {
 																	blMatch = true;
 																}
 
@@ -97,7 +99,7 @@
 																	intResults++;
 
 																	if( !isBlank( objOptions.matchClass ) ) {
-																		jqoSearchableItem.addClass( objOptions.matchClass )
+																		jqoSearchableItem.addClass( objOptions.matchClass );
 																	}
 																	if( !isBlank( objOptions.noMatchClass ) ) {
 																		jqoSearchableItem.removeClass( objOptions.noMatchClass );
@@ -107,7 +109,7 @@
 																		jqoSearchableItem.addClass( objOptions.noMatchClass );
 																	}
 																	if( !isBlank( objOptions.matchClass ) ) {
-																		jqoSearchableItem.removeClass( objOptions.matchClass )
+																		jqoSearchableItem.removeClass( objOptions.matchClass );
 																	}
 																}
 															}
@@ -136,7 +138,7 @@
 																	strSearchables = jqoSearchableItem.attr( objOptions.attribute ),
 																	intMatches = 0;
 
-															if( strThisSearchNodeName === 'select' ) {
+															if( objOptions.exactMatch === true ) {
 																if( objOptions.searchText ) {
 																	intMatches = ( strSearchTerm === jqoSearchableItem.text() ) ? 1 : 0;
 																} else {
@@ -151,14 +153,14 @@
 																	var strSearchTermPiece = arrSearchTerms[intTerm];
 
 																	if( strSearchTermPiece !== '' ) {
-																		if( strSearchTermPiece.length > 1
-																				&& strSearchTermPiece.substr( 0, 1 ) === '+'
-																				&& !contains( strSearchTermPiece.substr( 1 ).replace( /^"/, '' ).replace( /"$/, '' ), strSearchables ) ) {
+																		if( strSearchTermPiece.length > 1 &&
+																				strSearchTermPiece.substr( 0, 1 ) === '+' &&
+																				!contains( strSearchTermPiece.substr( 1 ).replace( /^"/, '' ).replace( /"$/, '' ), strSearchables ) ) {
 																			intMatches = 0;
 																			break;
-																		} else if( strSearchTermPiece.length > 1
-																				&& strSearchTermPiece.substr( 0, 1 ) === '-'
-																				&& contains( strSearchTermPiece.substr( 1 ).replace( /^"/, '' ).replace( /"$/, '' ), strSearchables ) ) {
+																		} else if( strSearchTermPiece.length > 1 &&
+																				strSearchTermPiece.substr( 0, 1 ) === '-' &&
+																				contains( strSearchTermPiece.substr( 1 ).replace( /^"/, '' ).replace( /"$/, '' ), strSearchables ) ) {
 																			intMatches = 0;
 																			break;
 																		} else {
@@ -209,18 +211,18 @@
 											jqoSearchTarget.removeClass( objOptions.noResultsClass );
 										}
 
-										if( ( typeof objOptions.results === 'object'
-													&& ( $( objOptions.results ) instanceof jQuery
-														|| objOptions.results.jquery ) )
-												|| $( objOptions.results ).length ) {
+										if( ( typeof objOptions.results === 'object' &&
+													( $( objOptions.results ) instanceof jQuery ||
+														objOptions.results.jquery ) ) ||
+												$( objOptions.results ).length ) {
 											$( objOptions.results ).text( intResults );
 										}
 
-										if( ( ( typeof objOptions.total === 'object'
-														&& ( $( objOptions.total ) instanceof jQuery
-															|| objOptions.total.jquery ) )
-													|| $( objOptions.total ).length )
-												&& jqoSearchPool.length !== intBaseTotal ) {
+										if( ( ( typeof objOptions.total === 'object' &&
+														( $( objOptions.total ) instanceof jQuery ||
+															objOptions.total.jquery ) ) ||
+													$( objOptions.total ).length ) &&
+												jqoSearchPool.length !== intBaseTotal ) {
 											intBaseTotal = jqoSearchPool.length;
 											$( objOptions.total ).text( intBaseTotal );
 										}
@@ -236,7 +238,7 @@
 										break;
 
 									case 'select':
-										jqoThisSearch.off( 'click' ).on( 'click', funSearch );
+										jqoThisSearch.off( 'click change' ).on( 'click change', funSearch );
 										break;
 								}
 
@@ -246,10 +248,10 @@
 									}
 								);
 
-								if( ( typeof objOptions.total === 'object'
-											&& ( $( objOptions.total ) instanceof jQuery
-												|| objOptions.total.jquery ) )
-										|| $( objOptions.total ).length ) {
+								if( ( typeof objOptions.total === 'object' &&
+											( $( objOptions.total ) instanceof jQuery ||
+												objOptions.total.jquery ) ) ||
+										$( objOptions.total ).length ) {
 									$( objOptions.total ).text( intBaseTotal );
 								}
 							} else {
@@ -257,10 +259,12 @@
 							}
 						}
 					);
-				},
+				};
+
 			$.fn.rummage.objDefaultOptions = {
 					attribute: 'data-rummage',
 					exclude: '.rummage-exclude',
+					exactMatch: false,
 					matchCase: false,
 					matchClass: '',
 					noMatchClass: 'rummage-nomatch',

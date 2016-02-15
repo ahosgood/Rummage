@@ -1,0 +1,26 @@
+{
+	"name": "rummage",
+	"version": "2.10.0",
+	"description": "jQuery Searchables",
+	"main": "gulpfile.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ahosgood/Rummage.git"
+	},
+	"author": "Andrew Hosgood",
+	"license": "LGPLv3",
+	"bugs": {
+		"url": "https://github.com/ahosgood/Rummage/issues"
+	},
+	"homepage": "https://github.com/ahosgood/Rummage#readme",
+	"devDependencies": {
+		"gulp": "*",
+		"gulp-rename": "*",
+		"gulp-uglify": "*",
+		"gulp-jshint": "*",
+		"jshint": "*"
+	}
+}

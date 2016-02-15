@@ -25,6 +25,7 @@ Rummage requires jQuery v1.7 or higher
 | Parameter      | Type    | Description                                                                                                           | Default                   | Details             |
 | -------------- | ------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------------------- |
 | attribute      | String  | The attribute name to search for and filter                                                                           | `'data-rummage'`          |                     |
+| exactMatch     | Boolean | Match only when the searchable item matches the search exactly                                                        | `false`                   | Added in 2.10.0      |
 | exclude        | String  | Selector of elements to exclude from the filtering process                                                            | `'.rummage-exclude'`      | Added in 2.7.0      |
 | matchCase      | Boolean | Case sensitive searching                                                                                              | `false`                   | Added in 2.8.0      |
 | matchClass     | String  | Class to add to a matched element                                                                                     | `''`                      |                     |
