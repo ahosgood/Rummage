@@ -65,20 +65,20 @@
 							addChangeListeners = function( jqoQueryElement ) {
 								switch( jqoQueryElement[0].nodeName.toLowerCase() ) {
 									case 'input':
-										switch( jqoThisSearch.attr( 'type' ) ) {
+										switch( jqoQueryElement.attr( 'type' ) ) {
 											case 'checkbox':
 											case 'radio':
-												jqoThisSearch.off( 'click change' ).on( 'click change', funSearch );
+												jqoQueryElement.off( 'click change' ).on( 'click change', funSearch );
 												break;
 
 											default:
-												jqoThisSearch.off( 'keyup search' ).on( 'keyup search', funSearch );
+												jqoQueryElement.off( 'keyup search' ).on( 'keyup search', funSearch );
 												break;
 										}
 										break;
 
 									case 'select':
-										jqoThisSearch.off( 'click change' ).on( 'click change', funSearch );
+										jqoQueryElement.off( 'click change' ).on( 'click change', funSearch );
 										break;
 								}
 							},
@@ -110,11 +110,15 @@
 											break;
 
 										default:
-											arrSearchQueries = [jqoQueryElement.val()];
+											if( jqoQueryElement.val() ) {
+												arrSearchQueries = [jqoQueryElement.val()];
+											}
 											break;
 									}
 								} else {
-									arrSearchQueries = [jqoQueryElement.val()];
+									if( jqoQueryElement.val() ) {
+										arrSearchQueries = [jqoQueryElement.val()];
+									}
 								}
 
 								return arrSearchQueries;
@@ -127,7 +131,6 @@
 									arrQueries = getSearchValueArray( jqoQueryElements );
 									addChangeListeners( jqoThisSearch );
 								} else {
-
 									$.each( jqoQueryElements.selector.replace( / *, */, ',' ).split( ',' ),
 											function( intQueryElement, jqsQueryElement ) {
 												var jqoQueryElement = $( jqsQueryElement ),
@@ -142,11 +145,13 @@
 									);
 								}
 
-								for( var intQuery in arrQueries ) {
-									if( arrReturnQueries.indexOf( arrQueries[intQuery] ) === -1 ) {
-										arrReturnQueries.push( arrQueries[intQuery] );
+								$.each( arrQueries,
+									function( intQuery, strQuery ) {
+										if( arrReturnQueries.indexOf( strQuery ) === -1 ) {
+											arrReturnQueries.push( strQuery );
+										}
 									}
-								}
+								);
 
 								return arrReturnQueries.join( ' +' );
 							},

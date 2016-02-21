@@ -8,29 +8,29 @@
 		<script src="../dist/rummage.min.js"></script>
 	</head>
 	<body>
-		<label><input type="radio" name="query1" value="" checked> All</label>
-		<label><input type="radio" name="query1" value="startsvowel"> Starts with a vowel</label>
-		<label><input type="radio" name="query1" value="iseuropean"> Is European</label>
-		<label><input type="radio" name="query1" value="sixletters"> Has six letters</label>
+		<input name="query0" type="search">
 		<br>
-		<label><input type="checkbox" name="query2[]" value="startsvowel"> Starts with a vowel</label>
-		<label><input type="checkbox" name="query2[]" value="iseuropean"> Is European</label>
-		<label><input type="checkbox" name="query2[]" value="sixletters"> Has six letters</label>
+		<label><input type="radio" name="query1" value="" checked> All</label>
+		<label><input type="radio" name="query1" value="feature1:iseuropean"> Is European</label>
+		<label><input type="radio" name="query1" value="feature1:other"> Outside Europe</label>
+		<br>
+		<label><input type="checkbox" name="query2[]" value="feature2:startsvowel"> Starts with a vowel</label>
+		<label><input type="checkbox" name="query2[]" value="feature2:sixletters"> Has six letters</label>
 		<p>Showing <span id="results">?</span> of <span id="total">?</span> results</p>
 		<ul id="countries">
-		    <li data-rummage="iseuropean">Belgium</li>
-		    <li data-rummage="iseuropean,sixletters">France</li>
-		    <li data-rummage="iseuropean">Germany</li>
-		    <li data-rummage="startsvowel,iseuropean">Italy</li>
-		    <li data-rummage="iseuropean">Portugal</li>
-			<li data-rummage="sixletters">Russia</li>
-			<li data-rummage="iseuropean">Spain</li>
-		    <li data-rummage="startsvowel,iseuropean">United Kingdom</li>
-		    <li data-rummage="startsvowel">United States</li>
+			<li data-rummage="BE,Belgium,feature1:iseuropean">Belgium</li>
+			<li data-rummage="FR,France,feature1:iseuropean,feature2:sixletters">France</li>
+			<li data-rummage="DE,Germany,feature1:iseuropean">Germany</li>
+			<li data-rummage="IT,Italy,feature1:iseuropean,feature2:startsvowel">Italy</li>
+			<li data-rummage="PT,Portugal,feature1:iseuropean">Portugal</li>
+			<li data-rummage="RU,Russia,feature1:other,feature2:sixletters">Russia</li>
+			<li data-rummage="ES,Spain,feature1:iseuropean">Spain</li>
+			<li data-rummage="UK,United Kingdom,feature1:iseuropean,feature2:startsvowel">United Kingdom</li>
+			<li data-rummage="USA,United States of America,feature1:other,feature2:startsvowel">United States</li>
 		    <li class="sorry-message">No Results Found</li>
 		</ul>
 		<script>
-		    $( '[name="query1"], [name="query2[]"]' ).rummage( '#countries', { results: '#results', total: '#total' } );
+		    $( '[name="query0"], [name="query1"], [name="query2[]"]' ).rummage( '#countries', { results: '#results', total: '#total' } );
 		</script>
 		<style>
 		    .rummage-nomatch, .sorry-message { display: none; }
