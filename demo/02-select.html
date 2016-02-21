@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Rummage - jQuery searchables</title>
+		<meta charset="utf-8">
+		<!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="../dist/rummage.min.js"></script>
+	</head>
+	<body>
+		<select id="query">
+			<option value="" selected>All</option>
+			<option value="european">European</option>
+			<option value="other">Other</option>
+		</select>
+		<p>Showing <span id="results">?</span> of <span id="total">?</span> results</p>
+		<ul id="countries">
+		    <li data-rummage="european">Belgium</li>
+		    <li data-rummage="european">France</li>
+		    <li data-rummage="european">Germany</li>
+		    <li data-rummage="european">Italy</li>
+		    <li data-rummage="european">Portugal</li>
+			<li data-rummage="other">Russia</li>
+			<li data-rummage="european">Spain</li>
+		    <li data-rummage="european">United Kingdom</li>
+		    <li data-rummage="other">United States</li>
+		    <li class="sorry-message">No Results Found</li>
+		</ul>
+		<script>
+		    $( '#query' ).rummage( '#countries', { exactMatch: true, results: '#results', total: '#total' } );
+		</script>
+		<style>
+		    .rummage-nomatch, .sorry-message { display: none; }
+		    .rummage-noresults .sorry-message { display: list-item; }
+		</style>
+	</body>
+</html>

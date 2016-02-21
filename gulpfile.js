@@ -9,7 +9,7 @@ gulp.task( 'build',
 				.pipe( jshint() )
 				.pipe( jshint.reporter( 'default' ) )
 				.pipe( rename( 'rummage.min.js' ) )
-				.pipe( uglify( { preserveComments: 'license' } ) )
+				//.pipe( uglify( { preserveComments: 'license' } ) )
 				.pipe( gulp.dest( 'dist' ) );
 	}
 );

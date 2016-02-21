@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Rummage - jQuery searchables</title>
+		<meta charset="utf-8">
+		<!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="../dist/rummage.min.js"></script>
+	</head>
+	<body>
+		<label><input type="radio" name="query" value="" checked> All</label>
+		<label><input type="radio" name="query" value="startsvowel"> Starts with a vowel</label>
+		<label><input type="radio" name="query" value="iseuropean"> Is European</label>
+		<label><input type="radio" name="query" value="sixletters"> Has six letters</label>
+		<p>Showing <span id="results">?</span> of <span id="total">?</span> results</p>
+		<ul id="countries">
+		    <li data-rummage="iseuropean">Belgium</li>
+		    <li data-rummage="iseuropean,sixletters">France</li>
+		    <li data-rummage="iseuropean">Germany</li>
+		    <li data-rummage="startsvowel,iseuropean">Italy</li>
+		    <li data-rummage="iseuropean">Portugal</li>
+			<li data-rummage="sixletters">Russia</li>
+			<li data-rummage="iseuropean">Spain</li>
+		    <li data-rummage="startsvowel,iseuropean">United Kingdom</li>
+		    <li data-rummage="startsvowel">United States</li>
+		    <li class="sorry-message">No Results Found</li>
+		</ul>
+		<script>
+		    $( '[name="query"]' ).rummage( '#countries', { results: '#results', total: '#total' } );
+		</script>
+		<style>
+		    .rummage-nomatch, .sorry-message { display: none; }
+		    .rummage-noresults .sorry-message { display: list-item; }
+		</style>
+	</body>
+</html>
