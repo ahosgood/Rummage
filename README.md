@@ -1,4 +1,4 @@
-#Rummage
+# Rummage
 
 Utilising jQuery, Rummage filters and searches through HTML attributes, allowing you to search without AJAX
 
@@ -63,4 +63,4 @@ Using the array of countries:
 | OR      | `united france`       | Every item with either "united" or "france" in                          | United Kingdom, United States, France, United Kingdom of the Netherlands |
 | AND     | `united +kingdom`     | Every item with both "united" and "kingdom" in                          | United Kingdom, United Kingdom of the Netherlands                        |
 | NOT     | `united -kingdom`     | Every item with "united" in, minus those with "kingdom"                 | United States                                                            |
-| Literal | `"united kingdom of"` | Every item with the exact string "united kingdom" in (case insensitive) | United Kingdom of the Netherlands                                        |
+| Literal | `"kingdom of"` | Every item with the exact string "kingdom of" in (case insensitive) | United Kingdom of the Netherlands                                        |
